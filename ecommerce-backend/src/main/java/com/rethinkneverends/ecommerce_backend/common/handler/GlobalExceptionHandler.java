@@ -116,4 +116,17 @@ public class GlobalExceptionHandler {
                                 .build()
                 );
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ExceptionResponseDTO> handleException(Exception exception) {
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(
+                        ExceptionResponseDTO.builder()
+                                .errorCode(ErrorCodes.GENERAL_ERROR.getCode())
+                                .errorDescription(ErrorCodes.GENERAL_ERROR.getDescription())
+                                .error(exception.getMessage())
+                                .build()
+                );
+    }
 }

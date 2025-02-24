@@ -13,6 +13,7 @@ public enum ErrorCodes {
     BAD_CREDENTIALS(304, UNAUTHORIZED, "Sorry, looks like that’s the wrong email or password."),
     USED_EMAIL(305, NOT_ACCEPTABLE, "Sorry, this email has been used."),
     USER_NOT_FOUND(306, NOT_ACCEPTABLE, "Sorry, this email is not exist. Please try again."),
+    GENERAL_ERROR(500, INTERNAL_SERVER_ERROR, "Something went wrong."),
     MAIL_SENDING_FAILED(307, INTERNAL_SERVER_ERROR, "The mail service is down.");
 
     @Getter

@@ -4,6 +4,7 @@ import com.rethinkneverends.ecommerce_backend.authentication.dto.*;
 import com.rethinkneverends.ecommerce_backend.authentication.exception.DuplicateEmailException;
 import com.rethinkneverends.ecommerce_backend.authentication.service.AuthenticationService;
 import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -54,9 +55,14 @@ public class AuthenticationController {
     }
 
     @PostMapping("reset-account")
-    public void resetAccount(
+    public ResponseEntity<?> resetAccount(
             @RequestBody @Valid PasswordResetRequestDTO request,
             HttpServletResponse response) {
-        authenticationService.resetPassword(request, response);
+        return ResponseEntity.ok(authenticationService.resetPassword(request, response));
+    }
+
+    @PostMapping("refresh-token")
+    public ResponseEntity<UserProfileDTO> refreshToken(HttpServletRequest request, HttpServletResponse response) {
+        return ResponseEntity.ok(authenticationService.refreshToken(request, response));
     }
 }

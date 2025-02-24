@@ -5,10 +5,12 @@ import com.rethinkneverends.ecommerce_backend.authentication.dto.*;
 import com.rethinkneverends.ecommerce_backend.authentication.entity.*;
 import com.rethinkneverends.ecommerce_backend.authentication.exception.*;
 import com.rethinkneverends.ecommerce_backend.authentication.repository.*;
+import com.rethinkneverends.ecommerce_backend.authentication.util.TokenUtils;
 import com.rethinkneverends.ecommerce_backend.common.constant.EmailTemplateName;
 import com.rethinkneverends.ecommerce_backend.common.constant.TokenType;
 import com.rethinkneverends.ecommerce_backend.common.constant.UserType;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -234,6 +236,42 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 .status(HttpStatus.OK.value())
                 .message("Reset your account successfully.")
                 .build();
+    }
+
+    @Override
+    public UserProfileDTO refreshToken(HttpServletRequest request, HttpServletResponse response) {
+        final String refreshToken = TokenUtils.extractJWTTokenFromCookies(request, "f_t");
+        // Validate token if it is expired or revoked
+        var foundedToken = tokenRepository.findByToken(refreshToken);
+        if (TokenUtils.INVALID_ACCESS_TOKEN.equals(refreshToken)
+                || foundedToken.isEmpty()
+                || Boolean.TRUE.equals(foundedToken.get().getExpired())
+                || Boolean.TRUE.equals(foundedToken.get().getRevoked())
+        ) {
+            throw new VerifyTokenException("Refresh token is invalid");
+        } else {
+            final String userEmail;
+            userEmail = jwtService.extractUsername(refreshToken);
+
+            if (null != userEmail) {
+                var user = this.userRepository.findByEmail(userEmail).orElse(null);
+                if (null == user) return null;
+                if (jwtService.isTokenValid(refreshToken, user)) {
+                    var accessToken = jwtService.generateToken(user);
+
+                    // Only Access Token
+                    revokedAllUserTokens(user, false);
+                    saveUserToken(user, accessToken, TokenType.ACCESS_TOKEN);
+                    response.addCookie(generateCookie("a_t", accessToken, 3600));
+                }
+                return UserProfileDTO.builder()
+                        .firstName(user.getFirstName())
+                        .lastName(user.getLastName())
+                        .roles(user.getRoles().stream().map(Role::getName).toList())
+                        .build();
+            }
+        }
+        throw new VerifyTokenException("Refresh token is invalid");
     }
 
     private void sendValidationTokenEmail(User user, EmailTemplateName templateName, String subject) throws Exception {
