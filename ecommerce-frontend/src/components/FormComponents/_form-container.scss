@@ -1,0 +1,25 @@
+@use "../../scss/abstracts/breakpoint" as breakpoint;
+.app__form-container {
+  // Mobile
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  border: 1px solid #2828281a;
+  border-radius: 8px;
+  padding: 28px;
+  margin: 48px auto;
+
+  &__title {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+@media (min-width: breakpoint.$mobile) {
+  // Desktop
+  .app__form-container {
+    width: 480px;
+  }
+}

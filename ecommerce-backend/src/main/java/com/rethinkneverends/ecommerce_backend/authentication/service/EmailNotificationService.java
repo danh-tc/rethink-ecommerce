@@ -50,6 +50,7 @@ public class EmailNotificationService implements NotificationService {
         Map<String, Object> properties = new HashMap<>();
         properties.put("username", config.get("username"));
         properties.put("confirmationUrl", config.get("confirmationUrl"));
+        properties.put("passwordChangingUrl", config.get("passwordChangingUrl"));
         properties.put("activation_code", config.get("verificationToken"));
 
         Context context = new Context();

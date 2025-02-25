@@ -53,6 +53,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Value("${spring.application.security.mailling.frontend.activation-url}")
     private String activationUrl;
 
+    @Value("${spring.application.security.mailling.frontend.password-changing-url}")
+    private String passwordChangingUrl;
+
     @Override
     @Transactional
     public RegisterResponseDTO register(RegistrationRequestDTO request) throws Exception {
@@ -85,10 +88,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public ActivationResponseDTO activateAccount(String token) throws Exception {
         VerificationToken savedActivationCode = verificationTokenRepository.findByCode(token)
-                .orElseThrow(() -> new RuntimeException("Verification token is invalid."));
+                .orElseThrow(() -> new RuntimeException("Your verification token is invalid. Please activate via the received link in your email."));
 
         if (savedActivationCode.getValidatedAt() != null) {
-            throw new VerifyTokenException("Verification token is validated.");
+            throw new VerifyTokenException("Your account has been activated. Please process to login. Thank you.");
         }
 
         if (LocalDateTime.now().isAfter(savedActivationCode.getExpiresAt())) {
@@ -234,7 +237,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
         return GeneralAuthenticationResponseDTO.builder()
                 .status(HttpStatus.OK.value())
-                .message("Reset your account successfully.")
+                .message("Reset your account successfully. You will be redirected to the home page in a second...")
                 .build();
     }
 
@@ -284,6 +287,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         config.put("subject", subject);
         config.put("verificationToken", verificationToken);
         config.put("confirmationUrl", activationUrl);
+        config.put("passwordChangingUrl", passwordChangingUrl);
 
         notificationService.sendNotification(config);
     }

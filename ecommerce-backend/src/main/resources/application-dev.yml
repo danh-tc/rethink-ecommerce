@@ -40,3 +40,4 @@ spring:
       mailling:
         frontend:
           activation-url: http://localhost:5173/auth/activate-account
+          password-changing-url: http://localhost:5173/auth/change-password

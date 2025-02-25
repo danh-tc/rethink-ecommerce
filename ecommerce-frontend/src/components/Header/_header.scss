@@ -1,0 +1,52 @@
+@use "../../scss/abstracts/color" as color;
+.app__header {
+  padding: 1rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
+
+  &__logo {
+    a {
+      display: block;
+      img {
+        height: 48px;
+        width: 100%;
+      }
+    }
+  }
+
+  &__nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    color: color.$primary-blue;
+
+    a {
+      color: color.$primary-blue;
+    }
+
+    .user-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      text-decoration: unset;
+    }
+
+    .user-info {
+      color: color.$black;
+    }
+  }
+}
