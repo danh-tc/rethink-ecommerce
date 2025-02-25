@@ -1,0 +1,38 @@
+@use '../../scss/abstracts/color' as color;
+.app__form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 14px;
+  font-size: 14px;
+
+  label {
+    color: color.$light-grey;
+  }
+
+  input {
+    padding: 11px;
+    border-radius: 4px;
+    line-height: 20px;
+    height: 44px;
+    border: 1px solid color.$light-grey-10;
+
+    &:hover {
+      border-color: color.$primary-blue;
+    }
+
+    outline-width: 2px;
+    outline-color: color.$primary-blue;
+  }
+
+  &__error {
+    color: color.$error-color;
+  }
+}
+
+@media (min-width: 768px) {
+  // Desktop
+  .app__form-control {
+    margin-top: 20px;
+  }
+}
