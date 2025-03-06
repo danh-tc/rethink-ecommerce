@@ -4,7 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum UserType {
-    NORMAL_USER("USER");
+    NORMAL_USER("USER"),
+    ADMIN("ADMIN");
     private final String type;
 
     UserType(String type) {

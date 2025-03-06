@@ -274,7 +274,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                         .build();
             }
         }
-        throw new VerifyTokenException("Refresh token is invalid");
+        throw new VerifyTokenException("Refresh token is invalid.");
     }
 
     private void sendValidationTokenEmail(User user, EmailTemplateName templateName, String subject) throws Exception {

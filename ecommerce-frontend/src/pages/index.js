@@ -6,6 +6,7 @@ import ActivationPage from "./ActivationPage";
 import HomePage from "./Home";
 import ResetAccountPage from "./ResetAccount";
 import ChangePasswordPage from "./ChangePassword";
+import ProductDetailPage from "./ProductDetail";
 
 export {
   RootLayout,
@@ -16,4 +17,5 @@ export {
   ResetAccountPage,
   ChangePasswordPage,
   HomePage,
+  ProductDetailPage,
 };

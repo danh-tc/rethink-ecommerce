@@ -1,0 +1,33 @@
+.rethink-tabs {
+  &__buttons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .tab-button {
+      outline: unset;
+      background-color: unset;
+      border: unset;
+      color: #a17c5e;
+      text-decoration: underline;
+      text-decoration-color: #a17c5e99;
+      text-underline-position: under;
+      text-transform: uppercase;
+      padding: 15px;
+      cursor: pointer;
+
+      &:hover,
+      &[data-highlighted] {
+        color: #454545;
+        text-decoration-color: #454545;
+      }
+    }
+  }
+
+  &__content {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #454545;
+  }
+}

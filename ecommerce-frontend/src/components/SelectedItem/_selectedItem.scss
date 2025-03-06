@@ -1,0 +1,28 @@
+.rethink-items {
+  &__label {
+    font-size: 15px;
+  }
+
+  &__container {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    .item {
+      background-color: transparent;
+      outline: unset;
+      border: 1px solid;
+      border: 0.8px solid #939393;
+      color: #939393;
+      cursor: pointer;
+      &__label {
+        padding: 20px;
+        font-size: 14px;
+        color: inherit;
+      }
+    }
+    .item--selected {
+      border-color: black;
+      color: black;
+    }
+  }
+}

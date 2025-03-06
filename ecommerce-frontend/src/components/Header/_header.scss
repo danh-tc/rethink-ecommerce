@@ -1,20 +1,29 @@
 @use "../../scss/abstracts/color" as color;
 .app__header {
-  padding: 1rem;
   width: 100%;
-  position: fixed;
+  position: sticky;
   top: 0;
+  left: 0;
+  z-index: 5;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 5%;
-  padding-right: 5%;
+  background-color: #fff;
+  padding: 18px 50px;
+
+  button {
+    background-color: unset;
+    border: unset;
+    outline: unset;
+    cursor: pointer;
+    color: #454545;
+  }
 
   &__logo {
     a {
       display: block;
       img {
-        height: 48px;
+        height: 40px;
         width: 100%;
       }
     }
@@ -24,29 +33,43 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    font-size: 14px;
+    a {
+      text-decoration: unset;
+      color: #454545;
+    }
   }
 
   &__icons {
     display: flex;
     align-items: center;
     gap: 15px;
+    font-size: 12px;
     cursor: pointer;
-    color: color.$primary-blue;
+    color: #454545;
 
     a {
-      color: color.$primary-blue;
-    }
-
-    .user-group {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
+      color: #454545;
       text-decoration: unset;
     }
 
-    .user-info {
-      color: color.$black;
+    .rethink-cart {
+      height: 1em;
+      width: 1em;
+      fill: currentColor;
+      vertical-align: middle;
+      stroke-width: 1px;
+      background: none;
+      pointer-events: none;
+      display: flex;
+      svg,
+      span {
+        flex-shrink: 0;
+      }
+      &-count {
+        margin-top: -5px;
+        margin-left: 3px;
+      }
     }
   }
 }

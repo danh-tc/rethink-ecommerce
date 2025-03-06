@@ -1,0 +1,16 @@
+.rethink-announcement {
+  background: #566f34;
+  color: #ffffff;
+  font-size: 12px;
+  &__wrapper {
+    padding: 12px 15px;
+
+    a {
+      color: #ffffff;
+      text-decoration: unset;
+    }
+  }
+  &__content {
+    text-align: center;
+  }
+}
