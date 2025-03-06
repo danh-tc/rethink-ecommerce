@@ -1,0 +1,41 @@
+.rethink-product-color {
+  margin-top: 15px;
+  &__label {
+    font-size: 15px;
+  }
+  &__container {
+    margin-top: 10px;
+    display: flex;
+    align-items: flex-starts;
+    justify-content: space-between;
+    gap: 20px;
+
+    span.selected-color--label {
+      flex-shrink: 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .colors {
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+      flex-wrap: wrap;
+      .color-option {
+        &--symbol {
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+          border: 1px solid #ddd;
+        }
+
+        &--selected {
+          position: relative;
+          border: 2px solid #454545;
+          border-radius: 5px;
+          box-shadow: 0 0 5px rgba(78, 86, 94, 0.5);
+        }
+      }
+    }
+  }
+}

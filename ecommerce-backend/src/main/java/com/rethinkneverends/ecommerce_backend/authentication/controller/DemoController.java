@@ -9,4 +9,9 @@ public class DemoController {
     public String hello() {
         return "Hello world from a secure endpoint!";
     }
+
+    @GetMapping("/admin/admin-only")
+    public String admin() {
+        return "This endpoint is for admin only.";
+    }
 }

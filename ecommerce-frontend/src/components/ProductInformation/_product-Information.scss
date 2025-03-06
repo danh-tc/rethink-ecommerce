@@ -1,0 +1,117 @@
+.rethink-product-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 50px;
+
+  &__meta {
+    .brand-name {
+      font-size: 14px;
+    }
+    .product-name {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .product-price {
+      margin-top: 15px;
+      color: #9d9d9d;
+      font-size: 16px;
+    }
+  }
+
+  &__variants {
+    margin-top: 24px;
+
+    .product-color {
+      margin-top: 20px;
+
+      &__label {
+        font-size: 15px;
+      }
+
+      &__option {
+        margin-top: 15px;
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
+        font-size: 14px;
+
+        .color-opt {
+          font-weight: 700;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          &__symbol {
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            background-color: aquamarine;
+          }
+        }
+      }
+    }
+
+    .product-quantity {
+      margin-top: 20px;
+    }
+  }
+
+  .add-to-card-btn {
+    margin-top: 20px;
+    cursor: pointer;
+    position: relative;
+    padding: 14px 28px;
+    line-height: normal;
+    border: 1px solid transparent;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    color: #5f3e22;
+    border-color: #c9bfb5;
+    outline: none;
+    font-weight: 400;
+    font-style: normal;
+    background-color: transparent;
+    overflow: hidden;
+    transition: color 0.45s ease-out 0.3s, border 0.45s ease-out 0.3s;
+    z-index: 1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #c9bfb5;
+      transform-origin: left center;
+      transform: scaleX(1);
+      transition: transform 0.45s ease-out;
+      z-index: -1;
+    }
+
+    &:hover {
+      color: #5f3e22;
+    }
+    &:hover::before {
+      transform: scaleX(0);
+    }
+  }
+
+  .wishlist-btn {
+    margin-top: 20px;
+    cursor: pointer;
+    border: unset;
+    padding: 14px 28px;
+    background-color: transparent;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+}
+

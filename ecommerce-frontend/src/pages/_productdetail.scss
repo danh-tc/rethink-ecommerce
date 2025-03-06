@@ -1,0 +1,19 @@
+.rethink-product-detail-container {
+  width: 100%;
+  margin: 0 auto 50px;
+  max-width: 1330px;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  display: flex;
+  align-items: flex-start;
+
+  .rethink-product-gallery {
+    position: sticky;
+    top: -32px;
+    width: 62.5%;
+  }
+  .rethink-product-info {
+    width: 37.5%;
+  }
+}

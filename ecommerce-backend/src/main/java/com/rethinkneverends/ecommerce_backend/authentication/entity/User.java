@@ -15,7 +15,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -74,8 +73,8 @@ public class User implements UserDetails, Principal {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.roles
                 .stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName()))
-                .collect(Collectors.toList());
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
+                .toList();
     }
 
     @Override

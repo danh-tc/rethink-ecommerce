@@ -29,7 +29,9 @@ public class SecurityConfiguration {
                 .cors(withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request ->
-                        request.requestMatchers(
+                        request
+                                .requestMatchers("/admin/**").hasRole("ADMIN")
+                                .requestMatchers(
                                         "/auth/**"
                                 ).permitAll()
                                 .anyRequest()
@@ -39,7 +41,7 @@ public class SecurityConfiguration {
                         -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .logout((logout) ->
+                .logout(logout ->
                         logout
                                 .logoutUrl("/auth/logout")
                                 .addLogoutHandler(logoutHandler)
