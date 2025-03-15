@@ -96,7 +96,7 @@ export default function ChangePasswordPage() {
             <p className="error-message">{hasBackendErrors}</p>
           )}
 
-          <Button className="login-btn" label="Confirm"></Button>
+          <Button className="rethink-button" label="Confirm"></Button>
         </FormContainer>
       ) : (
         <h3 className="app__activation__header" style={{ textAlign: "center" }}>

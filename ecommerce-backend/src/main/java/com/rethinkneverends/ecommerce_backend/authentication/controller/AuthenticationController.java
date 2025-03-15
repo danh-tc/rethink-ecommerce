@@ -1,9 +1,7 @@
 package com.rethinkneverends.ecommerce_backend.authentication.controller;
 
 import com.rethinkneverends.ecommerce_backend.authentication.dto.*;
-import com.rethinkneverends.ecommerce_backend.authentication.exception.DuplicateEmailException;
 import com.rethinkneverends.ecommerce_backend.authentication.service.AuthenticationService;
-import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;

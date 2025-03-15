@@ -1,5 +1,6 @@
 export function isEmail(value) {
-  return value.includes("@");
+  const isEmail = /^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  return isEmail.test(value);
 }
 
 export function isNotEmpty(value) {
@@ -13,4 +14,3 @@ export function hasMinLength(value, minLength) {
 export function isEqualsToOtherValue(value, otherValue) {
   return value === otherValue;
 }
-

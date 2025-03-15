@@ -167,7 +167,7 @@ export default function RegisterPage() {
         {hasBackendErrors && (
           <p className="error-message">{hasBackendErrors}</p>
         )}
-        <Button className="login-btn" label="Sign in"></Button>
+        <Button className="rethink-button" label="Sign in"></Button>
       </FormContainer>
     </div>
   );

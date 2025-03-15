@@ -67,7 +67,7 @@ export default function ResetAccountPage() {
         )}
 
         {!sendMail && (
-          <Button className="login-btn" label="Reset" disable></Button>
+          <Button className="rethink-button" label="Reset" disable></Button>
         )}
       </FormContainer>
     </div>

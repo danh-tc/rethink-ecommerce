@@ -6,6 +6,8 @@ import FormInput from "./FormComponents/FormInput";
 import Gallery from "./Gallery/Gallery";
 import ProductInformation from "./ProductInformation/ProductInformation";
 import NumberInput from "./NumberField/NumberInput";
+import Dropdown from "./Dropdown/Dropdown";
+import RichtextEditor from "./RTE/RichtextEditor";
 export {
   Header,
   Footer,
@@ -15,4 +17,6 @@ export {
   Gallery,
   ProductInformation,
   NumberInput,
+  Dropdown,
+  RichtextEditor,
 };

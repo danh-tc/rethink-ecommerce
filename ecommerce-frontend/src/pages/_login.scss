@@ -1,37 +1,61 @@
 @use "../scss/abstracts/color" as color;
-.reset-pwd {
-  color: color.$light-grey;
-  font-size: 14px;
-  margin-top: 4px;
 
-  &:hover {
-    text-decoration-thickness: 1.5px;
+.rethink-login {
+  margin-bottom: 80px;
+  margin-top: 80px;
+
+  .rethink-form-container {
+    border: unset;
+    &__title {
+      font-weight: 400;
+      font-size: 20px;
+      color: #454545;
+    }
   }
-}
-
-.register {
-  color: color.$primary-blue;
-  font-size: 14px;
-  margin: 20px auto;
-  margin-bottom: unset;
-
-  &:hover {
-    text-decoration-thickness: 1.5px;
+  &__sub-header {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #454545;
   }
-}
+  .reset-pwd {
+    color: color.$light-grey;
+    font-size: 14px;
+    // margin-top: 4px;
 
-.login-btn {
-  margin-top: 20px;
-  background-color: color.$primary-blue;
-  color: #fff;
-  border: unset;
-  border-radius: 10px;
-  padding: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+    &:hover {
+      text-decoration-thickness: 1.5px;
+    }
+  }
 
-  &:hover {
-    transform: scale(1.05);
-    transform-origin: center;
+  .register {
+    color: color.$primary-blue;
+    font-size: 14px;
+    margin: 20px auto;
+    margin-bottom: unset;
+
+    &:hover {
+      text-decoration-thickness: 1.5px;
+    }
+  }
+
+  .login-btn {
+    margin-top: 20px;
+    background-color: color.$primary-blue;
+    color: #fff;
+    border: unset;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      transform-origin: center;
+    }
+  }
+
+  .create-account {
+    margin-top: 24px;
   }
 }

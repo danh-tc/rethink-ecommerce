@@ -49,13 +49,13 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="centered-container">
+    <div className="rethink-login">
       <FormContainer
         title="Login"
         onSubmit={(event) => handleSubmitForm(event)}
       >
+        <div className="rethink-login__sub-header">Please enter your e-mail and password:</div>
         <FormInput
-          label="Email"
           id="email"
           name="email"
           placeholder="Email"
@@ -71,7 +71,6 @@ export default function LoginPage() {
           error={emailHasError && "Please enter a valid email address."}
         />
         <FormInput
-          label="Password"
           id="password"
           name="password"
           type="password"
@@ -93,10 +92,13 @@ export default function LoginPage() {
         <Link className="reset-pwd" to="/auth/reset-account">
           Forgot your password?
         </Link>
-        <Button className="login-btn" label="Sign in"></Button>
-        <Link className="register" to="/auth/register">
-          Create an account
-        </Link>
+        <Button label="Sign in"></Button>
+        <div className="create-account">
+          <span>Don&apos;t have an account?</span>
+          <Link className="register" to="/auth/register">
+            Create an account
+          </Link>
+        </div>
       </FormContainer>
     </div>
   );
