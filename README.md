@@ -1,4 +1,4 @@
-# Rethink Ecommer Website
+# Rethink Ecommerce Website
 
 Rethink is an ecommerce website with Spring Boot backend and React JS front end.
 
