@@ -3,7 +3,7 @@
 Rethink is an ecommerce website with Spring Boot backend and React JS front end.
 
 ## Inspired By
-This project is based on ideas from Bouali Ali for the backend and . I have modified and expanded on their original concept.  
+This project is based on ideas from Bouali Ali. I have modified and expanded on their original concept.  
 See their work here: [https://github.com/ali-bouali/book-social-network].
 
 
