@@ -1,13 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 import {
   RootLayout,
-  LoginPage,
-  RegisterPage,
-  Thankyou,
-  ActivationPage,
   HomePage,
-  ResetAccountPage,
-  ChangePasswordPage,
+  ProductCreatingPage,
+  AdminRootPage,
+  CategoryCreatingPage,
+  AuthRecoverPage,
+  AuthChangePassword,
+  AuthLoginPage,
+  AuthRegisterPage,
+  AuthActivationPage,
 } from "../pages/index";
 import UnAuthenticatedRoute from "../utils/UnAuthenticatedRoute";
 export const router = createBrowserRouter([
@@ -20,22 +22,35 @@ export const router = createBrowserRouter([
         path: "/auth",
         element: <UnAuthenticatedRoute />,
         children: [
-          { path: "register", element: <RegisterPage /> },
-          { path: "login", element: <LoginPage /> },
-          { path: "thank-you", element: <Thankyou /> },
+          { path: "register", element: <AuthRegisterPage /> },
+          { path: "login", element: <AuthLoginPage /> },
           {
             path: "activate-account",
-            element: <ActivationPage />,
+            element: <AuthActivationPage />,
           },
           {
             path: "reset-account",
-            element: <ResetAccountPage />,
+            element: <AuthRecoverPage />,
           },
           {
             path: "change-password",
-            element: <ChangePasswordPage />,
+            element: <AuthChangePassword />,
           },
         ],
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminRootPage />,
+    children: [
+      {
+        path: "products",
+        children: [{ path: "create", element: <ProductCreatingPage /> }],
+      },
+      {
+        path: "categories",
+        children: [{ path: "create", element: <CategoryCreatingPage /> }],
       },
     ],
   },

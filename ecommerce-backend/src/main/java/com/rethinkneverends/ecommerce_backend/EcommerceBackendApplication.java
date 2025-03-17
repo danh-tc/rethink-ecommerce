@@ -32,20 +32,26 @@ public class EcommerceBackendApplication {
             if (roleRepository.findByName("USER").isEmpty()) {
                 roleRepository.save(Role.builder().name("USER").build());
             }
-            if (categoryRepository.findByName("TOP").isEmpty()) {
+            if (categoryRepository.findByName("TOPS").isEmpty()) {
                 categoryRepository.save(Category.builder()
                         .publicId(UUID.randomUUID())
-                        .name("TOP")
+                        .name("TOPS")
                         .build());
             }
-            if (productRepository.findByName("TOP-TEST-04").isEmpty()) {
-                productRepository.save(Product.builder()
-                        .brand("Rethink Official")
-                        .name("TOP-TEST-04")
-                        .category(null)
+            if (categoryRepository.findByName("BOTTOMS").isEmpty()) {
+                categoryRepository.save(Category.builder()
+                        .publicId(UUID.randomUUID())
+                        .name("BOTTOMS")
                         .build());
-
             }
+//            if (productRepository.findByName("TOP-TEST-04").isEmpty()) {
+//                productRepository.save(Product.builder()
+//                        .brand("Rethink Official")
+//                        .name("TOP-TEST-04")
+//                        .category(null)
+//                        .build());
+//
+//            }
         };
     }
 

@@ -1,7 +1,8 @@
 @use '../../scss/abstracts/color' as color;
-.app__form-control {
+.rethink__form-control {
   display: flex;
   flex-direction: column;
+  position: relative;
   gap: 4px;
   margin-top: 14px;
   font-size: 14px;
@@ -18,21 +19,18 @@
     border: 1px solid color.$light-grey-10;
 
     &:hover {
-      border-color: color.$primary-blue;
+      border-color: #858585;
     }
 
     outline-width: 2px;
-    outline-color: color.$primary-blue;
+    outline-color: #858585;
   }
 
-  &__error {
-    color: color.$error-color;
-  }
 }
 
 @media (min-width: 768px) {
   // Desktop
-  .app__form-control {
+  .rethink__form-control {
     margin-top: 20px;
   }
 }

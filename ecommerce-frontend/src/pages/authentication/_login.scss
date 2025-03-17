@@ -1,0 +1,68 @@
+.rethink-login,
+.rethink-auth {
+  margin-bottom: 80px;
+  margin-top: 80px;
+
+  &__error {
+    background: #e4c4c4;
+    color: #cb2b2b;
+    display: block;
+    padding: 10px 20px;
+    white-space: normal;
+    word-break: break-all;
+    word-break: break-word;
+    text-shadow: none;
+  }
+
+  .rethink-form-container {
+    border: unset;
+
+    &__title {
+      font-weight: 400;
+      font-size: 20px;
+      color: #454545;
+    }
+  }
+
+  &__sub-header {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #454545;
+  }
+
+  .reset-pwd {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 6.5px);
+    color: #9d9d9d;
+    line-height: 1;
+    font-size: 13px;
+    text-decoration: none;
+
+    &:hover {
+      color: #454545;
+    }
+  }
+
+  .sub-text,
+  .create-account {
+    color: #9d9d9d;
+    margin: 24px 0 0;
+    line-height: 1.65;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .create-account {
+    font-size: 15px;
+
+    a {
+      color: #454545;
+
+      &:hover {
+        color: #9d9d9d;
+      }
+    }
+  }
+}

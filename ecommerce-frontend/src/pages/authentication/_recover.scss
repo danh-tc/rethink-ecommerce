@@ -1,0 +1,19 @@
+.rethink-recover {
+  .rethink__form-control {
+    position: relative;
+  }
+  label {
+    position: absolute;
+    top: -10.5px;
+    left: 20px;
+    background-color: #fff;
+    padding: 0 10px;
+  }
+  .success-message {
+    a {
+      text-decoration: none;
+      color: #454545;
+      font-weight: 600;
+    }
+  }
+}

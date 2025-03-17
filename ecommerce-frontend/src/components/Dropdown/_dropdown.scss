@@ -1,0 +1,78 @@
+.rethink-dropdown--container {
+  .rethink-dropdown {
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid rgba(40, 40, 40, 0.1019607843);
+    outline-width: 2px;
+    outline-color: #858585;
+    border-radius: 4px;
+
+    &:hover {
+      border-color: #858585;
+    }
+
+    &__label {
+      font-size: 14px;
+      margin-bottom: 4px;
+      color: #929292;
+    }
+
+    button {
+      width: 100%;
+      background-color: unset;
+      border: unset;
+      outline: unset;
+      text-align: left;
+    }
+
+    &__place-holder {
+      width: inherit;
+      position: relative;
+      cursor: pointer;
+      text-align: left;
+      padding: 11px;
+      border-radius: 4px;
+      line-height: 20px;
+      height: 44px;
+    }
+
+    &__menu {
+      width: inherit;
+      position: absolute;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      top: 52px;
+      background: #fff;
+      box-shadow: 0 4px 9pt rgba(0, 0, 0, 0.08);
+      max-height: 225px;
+      overflow-y: auto;
+
+      &__item {
+        width: inherit;
+        cursor: pointer;
+        padding: 12px 16px;
+        color: #9d9d9d;
+        text-align: left;
+
+        &:hover {
+          color: #454545;
+        }
+      }
+      .item-selected {
+        color: #454545;
+        background-color: #c9bfb5;
+      }
+    }
+
+    &__icon {
+      position: absolute;
+      right: 10px;
+      top: calc(50% - 10px);
+      font-size: 20px;
+      color: #454545;
+    }
+  }
+}

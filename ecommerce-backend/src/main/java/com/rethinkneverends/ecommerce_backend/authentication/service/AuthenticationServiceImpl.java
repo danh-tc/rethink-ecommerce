@@ -1,6 +1,5 @@
 package com.rethinkneverends.ecommerce_backend.authentication.service;
 
-
 import com.rethinkneverends.ecommerce_backend.authentication.dto.*;
 import com.rethinkneverends.ecommerce_backend.authentication.entity.*;
 import com.rethinkneverends.ecommerce_backend.authentication.exception.*;
@@ -39,7 +38,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
-
 
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
@@ -82,13 +80,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         sendValidationTokenEmail(user, EmailTemplateName.ACTIVATE_ACCOUNT, "Activation Email");
         return RegisterResponseDTO.builder()
                 .status(200)
-                .message("Register successfully.").build();
+                .message("Thank you for registering. Please check your email to activate your account.").build();
     }
 
     @Override
     public ActivationResponseDTO activateAccount(String token) throws Exception {
         VerificationToken savedActivationCode = verificationTokenRepository.findByCode(token)
-                .orElseThrow(() -> new RuntimeException("Your verification token is invalid. Please activate via the received link in your email."));
+                .orElseThrow(() -> new RuntimeException(
+                        "Your verification token is invalid. Please activate via the received link in your email."));
 
         if (savedActivationCode.getValidatedAt() != null) {
             throw new VerifyTokenException("Your account has been activated. Please process to login. Thank you.");
@@ -99,7 +98,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             sendValidationTokenEmail(savedActivationCode.getUser(),
                     EmailTemplateName.ACTIVATE_ACCOUNT,
                     "Activation Email");
-            throw new VerifyTokenException("Activation code has expired. A new token has been sent to the same email address");
+            throw new VerifyTokenException(
+                    "Activation code has expired. A new token has been sent to the same email address.");
         }
 
         var user = userRepository.findById(savedActivationCode.getUser().getId())
@@ -135,8 +135,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         if (null != foundFailedLoginAttempt.getLockedUntil()) {
             if (LocalDateTime.now().isBefore(foundFailedLoginAttempt.getLockedUntil())) {
-                throw new AttemptLoginException
-                        ("Your account was locked because of entering an incorrect password too many times.");
+                throw new AttemptLoginException(
+                        "Your account was locked because of entering an incorrect password too many times.");
             } else {
                 foundFailedLoginAttempt.setLockedUntil(null);
                 foundFailedLoginAttempt.setAttempts(0);
@@ -148,9 +148,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             request.getEmail(),
-                            request.getPassword()
-                    )
-            );
+                            request.getPassword()));
         } catch (Exception exception) {
             // Add one count if there is a wrong password.
             int numOfAttempts = foundFailedLoginAttempt.getAttempts() + 1;
@@ -190,20 +188,20 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                                 .lastName(user.getLastName())
                                 .dateOfBirth(user.getDateOfBirth())
                                 .roles(user.getRoles().stream().map(Role::getName).toList())
-                                .build()
-                )
+                                .build())
                 .build();
     }
 
     @Override
     @Transactional
-    public GeneralAuthenticationResponseDTO requestPasswordReset(@Valid PasswordResetRequestDTO request, HttpServletResponse response) throws Exception {
+    public GeneralAuthenticationResponseDTO requestPasswordReset(@Valid PasswordResetRequestDTO request,
+                                                                 HttpServletResponse response) throws Exception {
         var foundedUser = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new UserNotFoundException("User not found."));
         sendValidationTokenEmail(foundedUser, EmailTemplateName.RESET_PASSWORD, "Reset Password Email");
         return GeneralAuthenticationResponseDTO.builder()
                 .status(HttpStatus.OK.value())
-                .message("Please check your email to reset your account.")
+                .message("We have sent you an email with instructions to reset your password.")
                 .build();
     }
 
@@ -214,7 +212,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         var foundToken = verificationTokenRepository.findByCode(request.getToken())
                 .orElseThrow(() -> new VerifyTokenException("Invalid reset password token."));
 
-        if (LocalDateTime.now().isAfter(foundToken.getExpiresAt())) {
+        if (LocalDateTime.now().isAfter(foundToken.getExpiresAt())
+                || foundToken.getValidatedAt() != null) {
             throw new VerifyTokenException("Token was expired. Please process forget password again.");
         }
 
@@ -222,7 +221,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (null != foundUser) {
             foundUser.setPassword(passwordEncoder.encode(request.getPassword()));
             userRepository.save(foundUser);
-            //Invalidate the token
+            // Invalidate the token
             foundToken.setValidatedAt(LocalDateTime.now());
             verificationTokenRepository.save(foundToken);
             // Reset login attempts
@@ -249,8 +248,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (TokenUtils.INVALID_ACCESS_TOKEN.equals(refreshToken)
                 || foundedToken.isEmpty()
                 || Boolean.TRUE.equals(foundedToken.get().getExpired())
-                || Boolean.TRUE.equals(foundedToken.get().getRevoked())
-        ) {
+                || Boolean.TRUE.equals(foundedToken.get().getRevoked())) {
             throw new VerifyTokenException("Refresh token is invalid");
         } else {
             final String userEmail;
@@ -258,7 +256,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
             if (null != userEmail) {
                 var user = this.userRepository.findByEmail(userEmail).orElse(null);
-                if (null == user) return null;
+                if (null == user)
+                    return null;
                 if (jwtService.isTokenValid(refreshToken, user)) {
                     var accessToken = jwtService.generateToken(user);
 

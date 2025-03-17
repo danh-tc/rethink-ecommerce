@@ -1,8 +1,48 @@
-.app__button {
-  border: 0;
-  padding: 10px;
-  border-radius: 10px;
-  color: #fff;
-  background-color: #10069f;
+.rethink-button {
+  margin-top: 20px;
   cursor: pointer;
+  position: relative;
+  padding: 14px 28px;
+  line-height: normal;
+  border: 1px solid transparent;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  color: #5f3e22;
+  border-color: #c9bfb5;
+  outline: none;
+  font-weight: 400;
+  font-style: normal;
+  background-color: transparent;
+  overflow: hidden;
+  transition: color 0.45s ease-out 0.3s, border 0.45s ease-out 0.3s;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #c9bfb5;
+    transform-origin: left center;
+    transform: scaleX(1);
+    transition: transform 0.45s ease-out;
+    z-index: -1;
+  }
+
+  &:not(:disabled):hover {
+    color: #5f3e22;
+  }
+  &:not(:disabled):hover::before {
+    transform: scaleX(0);
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
