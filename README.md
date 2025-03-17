@@ -2,7 +2,8 @@
 
 Rethink is an ecommerce website with Spring Boot backend and React JS front end.
 
-## Current functions:
+## Authentication functions:
+Currently, I use JWT tokens for my authentication service, with access tokens having a short TTL and refresh tokens having a long TTL. I try to protect my app by using HTTP-only cookies to prevent XSS and implementing CORS in my backend service. In the future, I plan to update my Spring Security configuration to mitigate CSRF attacks.
 
   - Register -> Activate via email
   - Login
