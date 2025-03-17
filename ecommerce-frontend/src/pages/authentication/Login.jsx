@@ -12,13 +12,13 @@ export default function AuthLoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-
-  const [loginForm, setLoginForm] = useState({
-    emailValue: null,
-    passwordValue: null,
-    frontendErrors: null,
-    backendErrors: null,
-  });
+  const initialData = {
+    emailValue: "",
+    passwordValue: "",
+    frontendErrors: "",
+    backendErrors: "",
+  };
+  const [loginForm, setLoginForm] = useState(initialData);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,8 +40,8 @@ export default function AuthLoginPage() {
     setLoginForm((previousForm) => {
       return {
         ...previousForm,
-        frontendErrors: null,
-        backendErrors: null,
+        frontendErrors: "",
+        backendErrors: "",
       };
     });
     const { emailValue, passwordValue } = loginForm;
@@ -56,14 +56,14 @@ export default function AuthLoginPage() {
       setLoginForm((previousForm) => {
         return {
           ...previousForm,
-          frontendErrors: "Please a valid email.",
+          frontendErrors: "Please input a valid email.",
         };
       });
     } else {
       setLoginForm((previousForm) => {
         return {
           ...previousForm,
-          frontendErrors: null,
+          frontendErrors: "",
         };
       });
     }
@@ -115,7 +115,7 @@ export default function AuthLoginPage() {
         </div>
         {(loginForm.frontendErrors || loginForm.backendErrors) && (
           <div className="rethink__form-control">
-            <div className="rethink-login__error">
+            <div className="error-message">
               {loginForm.frontendErrors || loginForm.backendErrors}
             </div>
           </div>

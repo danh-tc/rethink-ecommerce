@@ -99,23 +99,33 @@ h6 {
   font-size: 14px;
 }
 
+.error-message {
+  background: #e4c4c4;
+  color: #cb2b2b;
+  display: block;
+  padding: 10px 20px;
+  white-space: normal;
+  word-break: break-all;
+  word-break: break-word;
+  text-shadow: none;
+}
+
+.success-message {
+  background: #d2e4c4;
+  color: #307a07;
+  display: block;
+  padding: 10px 20px;
+  white-space: normal;
+  word-break: break-all;
+  word-break: break-word;
+  text-shadow: none;
+}
+
 .centered-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100vh;
-}
-
-.error-message {
-  margin-top: 4px;
-  font-size: 14px;
-  color: color.$error-color;
-}
-
-.success-message {
-  margin-top: 4px;
-  font-size: 14px;
-  color: color.$sucess-color;
 }
 
 .loader-container {

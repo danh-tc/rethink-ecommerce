@@ -1,5 +1,5 @@
-
-.rethink-login {
+.rethink-login,
+.rethink-auth {
   margin-bottom: 80px;
   margin-top: 80px;
 
@@ -56,15 +56,13 @@
 
   .create-account {
     font-size: 15px;
-    
+
     a {
       color: #454545;
-      
+
       &:hover {
         color: #9d9d9d;
       }
     }
   }
-
-  
 }

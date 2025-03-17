@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./_announcement-bar.scss";
 
 export default function AnnouncementBar({ content, targetLink }) {

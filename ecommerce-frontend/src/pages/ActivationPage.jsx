@@ -6,7 +6,6 @@ import { FaCheckCircle } from "react-icons/fa";
 import { doActivation } from "../services/authenticationService";
 
 // Fix strict mode in local
-
 export default function ActivationPage() {
   const [isActivated, setIsActivated] = useState(false);
   const [hasError, setHasError] = useState(null);
